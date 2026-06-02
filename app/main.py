@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from database import engine
 import models
-from routers import admin_tokens, admin_scripts, admin_logs, scripts, logs
+from routers import auth, admin_tokens, admin_scripts, admin_logs, scripts, logs
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -14,6 +14,7 @@ app = FastAPI(
     description="Secure shell script execution microservice for Isy.One"
 )
 
+app.include_router(auth.router)
 app.include_router(admin_tokens.router)
 app.include_router(admin_scripts.router)
 app.include_router(admin_logs.router)

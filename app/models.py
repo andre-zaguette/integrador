@@ -24,6 +24,8 @@ class Token(Base):
 
     id = Column(String(36), primary_key=True, default=_uuid)
     name = Column(String(100), nullable=False)
+    username = Column(String(100), unique=True, nullable=True, index=True)
+    password_hash = Column(String(128), nullable=True)
     token = Column(String(64), unique=True, nullable=False, index=True)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)

@@ -42,6 +42,8 @@ class ScriptPublic(BaseModel):
 
 class TokenCreate(BaseModel):
     name: str
+    username: str
+    password: str
 
 
 class TokenPatch(BaseModel):
@@ -56,6 +58,20 @@ class TokenResponse(BaseModel):
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+class AdminLoginRequest(BaseModel):
+    password: str
+
+
+class ClientLoginRequest(BaseModel):
+    username: str
+    password: str
+
+
+class LoginResponse(BaseModel):
+    token: str
+    token_type: str = "bearer"
 
 
 class ExecuteRequest(BaseModel):
