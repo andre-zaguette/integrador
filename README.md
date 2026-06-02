@@ -110,6 +110,11 @@ make build     # reconstrói a imagem Docker
 make test      # roda a suíte de testes (38 testes)
 ```
 
+> **Atenção:** se o banco já existia de uma versão anterior e você vir erro 500 ao acessar tokens, o schema está desatualizado. Recrie o volume:
+> ```bash
+> make down && docker volume rm hackaton_postgres_data && make up
+> ```
+
 ---
 
 ## Como usar a API
